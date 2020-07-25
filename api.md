@@ -1,5 +1,6 @@
-# /register
-POST: http basic auth with a blank body
+# POST /register
+
+HTTP Basic Auth w/ Blank Body
 
 | Code | Reason |
 | ---- | ------ |
@@ -8,8 +9,9 @@ POST: http basic auth with a blank body
 | 409  | username already exists |
 | 500  | internal server error |
 
-# /change-pw
-POST: http basic auth with new password in body
+# POST /change-password
+
+HTTP Basic Auth w/ new password in body
 
 | Code | Reason |
 | ---- | ------ |
@@ -17,9 +19,12 @@ POST: http basic auth with new password in body
 | 401  | bad username or password |
 | 500  | internal server error |
 
-# /store
-POST: http basic auth
+# POST /store
+
+HTTP Basic Auth w/ Blank Body
+
 Headers should contain Length: in bytes
+
 Header may include Hash: "Username-Keyed Blake2b Hash"
 
 On success, will a random transfer-id for completing the transfer
@@ -34,9 +39,12 @@ On success, will a random transfer-id for completing the transfer
 | 401  | bad username or password |
 | 500  | internal server error |
 
-# /store/{transfer-id}
-POST: http basic auth with blob as body
+# POST /store/{transfer-id}
+
+HTTP Basic Auth w/ Blob in Body
+
 Headers should contain Offset: and Length:
+
 Offset will be assumed to be 0
 
 | Code | Reason |
@@ -47,15 +55,19 @@ Offset will be assumed to be 0
 | 404  | bad transfer id or no access | 
 | 500  | internal server error |
 
-# /store/{transfer-id}
-GET: http basic auth
+# GET /store/{transfer-id}
+
+HTTP Basic Auth w/ Blank Body
 
 On success will return
+
+```
 {
   "expected-size": 
   "received-size":
   "status":
 }
+```
 
 | Transfer Status | Explanation |
 | ------ | ----------- |
@@ -74,8 +86,10 @@ On success will return
 | 404  | invalid transfer id or no access |
 | 500  | internal server error |
 
-# /store/{transfer-id}
-DELETE: http basic auth
+# DELETE /store/{transfer-id}
+
+HTTP Basic Auth w/ Blank Body
+
 Aborts the transfer
 
 | Code | Reason |
@@ -84,11 +98,14 @@ Aborts the transfer
 | 401 | bad username or password |
 | 500 | internal server error |
 
-# /blob/{hash}
-GET: http basic auth
+# GET /blob/{hash}
+
+HTTP Basic Auth w/ Blank Body
+
 Headers may contain Offset:, assumed 0
 
 Response header will include Length
+
 Response body will be the blob content
 
 | Code | Reason |
@@ -99,8 +116,9 @@ Response body will be the blob content
 | 404  | blob not found or no access ;) |
 | 500  | internal server error |
 
-# /blob/{hash}
-HEAD: http basic auth
+# HEAD /blob/{hash}
+
+HTTP Basic Auth w/ Blank Body
 
 Response header will include Length
 
@@ -112,8 +130,10 @@ Response header will include Length
 | 404  | blob not found or no access ;) |
 | 500  | internal server error |
 
-# /blob/{hash}
-DELETE: http basic auth
+# DELETE /blob/{hash}
+
+HTTP Basic Auth w/ Blank Body
+
 Deletes the blob
 
 | Code | Reason |
@@ -122,8 +142,10 @@ Deletes the blob
 | 401  | bad username or password |
 | 500  | internal server error |
 
-# /alias/
-POST: http basic auth
+# POST /alias/
+
+HTTP Basic Auth w/ Blank Body
+
 Creates a new alias, pointing to nothing, and returns the id
 
 | Code | Reason |
@@ -133,9 +155,9 @@ Creates a new alias, pointing to nothing, and returns the id
 | 500  | internal server error |
 
 
-# /alias/{id}
-POST: http basic auth
-Body: a blob hash
+# POST /alias/{id}
+
+HTTP Basic Auth w/ new hash in body
 
 Updates the alias to point at the blob hash
 
@@ -147,8 +169,9 @@ Updates the alias to point at the blob hash
 | 404  | alias not found or no access |
 | 500  | internal server error |
 
-# /alias/{id}
-GET: http basic auth
+# GET /alias/{id}
+
+HTTP Basic Auth w/ Blank Body
 
 Gets the current hash for the alias
 
@@ -159,13 +182,13 @@ Gets the current hash for the alias
 | 404  | alias not found or no access|
 | 500  | internal server error |
 
-# /alias/{id}
-DELETE: http basic auth
+# DELETE /alias/{id}
+HTTP Basic Auth w/ Blank Body
 
 Deletes the alias
+
 | Code | Reason |
 | ---- | ------- |
 | 200  | alias deleted, alias didn't exist, or no access |
 | 401  | bad username or password |
 | 500  | internal server error |
-

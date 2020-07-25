@@ -7,7 +7,8 @@ Authentication happens with HTTP Basic Auth
 
 # Storage
 Incoming blobs are hashed with Blake2-256 with username as key, which is used to index them.  
-The blobs themselves are stored by default in /var/dumbstore/data but that can be changed by config. Subfolders are created by XXXX/XXXX/[full hash].  
+The blobs themselves are stored by default in `/var/dumbstore/data` but that can be changed by config.  
+Subfolders are created by XXXX/XXXX/[full hash].  
 The metadata for the blob (size, filepath, owner, etc) is stored in a postgres server, indexed by hash.  
 
 # Aliases

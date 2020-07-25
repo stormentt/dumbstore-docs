@@ -25,5 +25,5 @@ Dumbstore can store, retrieve, and delete data, using the identifier & Basic Aut
 # Motivations
 | Thing | Why |
 | ----- | --- |
-| Blake2-256 keyed with Username | Fast, easy to implement, prevents two users from having duplicate ID's |
+| Blake2-256 keyed with Username | Fast, easy to implement, prevents two users from having duplicate blob ID's |
 | HTTP Basic Auth | Simplicity, nearly every HTTP2 client has support |

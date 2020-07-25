@@ -92,6 +92,7 @@ Response header will include Length
 Response body will be the blob content
 
 | Code | Reason |
+| ---- | ------ |
 | 200  | success | 
 | 400  | bad request |
 | 401  | bad username or password |
@@ -104,6 +105,7 @@ HEAD: http basic auth
 Response header will include Length
 
 | Code | Reason |
+| ---- | ------ |
 | 200  | blob exists & access allowed | 
 | 400  | bad request |
 | 401  | bad username or password |
